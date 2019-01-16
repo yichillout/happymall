@@ -30,9 +30,9 @@ public class UserManageController {
     @ResponseBody
     public ServerResponse<User> login(String username, String password, HttpSession session) {
         ServerResponse response = iUserService.login(username, password);
-        if(response.isSuccess()) {
+        if (response.isSuccess()) {
             User user = (User) response.getData();
-            if(user.getRole() == Const.Role.ROLE_ADMIN) {
+            if (user.getRole() == Const.Role.ROLE_ADMIN) {
                 //说明是管理员
                 session.setAttribute(Const.CURRENT_USER, user);
                 return response;
